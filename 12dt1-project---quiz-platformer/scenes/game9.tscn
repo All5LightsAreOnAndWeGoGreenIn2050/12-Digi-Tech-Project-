@@ -1,0 +1,148 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjcds0rrjvo4h"]
+
+[ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_r5mhn"]
+[ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="2_g7ys7"]
+[ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="3_60wgk"]
+[ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="4_tvdjs"]
+
+[sub_resource type="GDScript" id="GDScript_aywui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5u0r"]
+size = Vector2(20, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_geixk"]
+size = Vector2(20, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wa76e"]
+size = Vector2(20, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcmla"]
+size = Vector2(20, 81)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgf4e"]
+texture = ExtResource("3_60wgk")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0.25, 8, 8, -8, 8)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0.25, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_dj43a"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bgf4e")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fx4ty"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Quiz Manager" type="Node" parent="."]
+script = ExtResource("1_r5mhn")
+
+[node name="Question" type="Label" parent="Quiz Manager"]
+offset_left = -287.0
+offset_top = -161.0
+offset_right = 91.0
+offset_bottom = -138.0
+text = "Question: "
+
+[node name="AnswerA" type="Area2D" parent="Quiz Manager"]
+position = Vector2(1, 0)
+collision_layer = 2
+script = SubResource("GDScript_aywui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerA"]
+position = Vector2(299, -128)
+shape = SubResource("RectangleShape2D_u5u0r")
+
+[node name="AnswerB" type="Area2D" parent="Quiz Manager"]
+position = Vector2(1, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerB"]
+position = Vector2(299, -43)
+shape = SubResource("RectangleShape2D_geixk")
+
+[node name="AnswerC" type="Area2D" parent="Quiz Manager"]
+position = Vector2(253, 57)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerC"]
+position = Vector2(47, -21)
+shape = SubResource("RectangleShape2D_wa76e")
+
+[node name="AnswerD" type="Area2D" parent="Quiz Manager"]
+position = Vector2(277, 142)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerD"]
+position = Vector2(23, -21)
+shape = SubResource("RectangleShape2D_wcmla")
+
+[node name="A" type="Label" parent="Quiz Manager"]
+offset_left = 149.0
+offset_top = -134.0
+offset_right = 189.0
+offset_bottom = -111.0
+text = "A. "
+
+[node name="B" type="Label" parent="Quiz Manager"]
+offset_left = 149.0
+offset_top = -53.0
+offset_right = 189.0
+offset_bottom = -30.0
+text = "B."
+
+[node name="C" type="Label" parent="Quiz Manager"]
+offset_left = 149.0
+offset_top = 25.0
+offset_right = 189.0
+offset_bottom = 48.0
+text = "C."
+
+[node name="D" type="Label" parent="Quiz Manager"]
+offset_left = 149.0
+offset_top = 98.0
+offset_right = 189.0
+offset_bottom = 121.0
+text = "D."
+
+[node name="Score" type="Label" parent="Quiz Manager"]
+offset_left = -286.0
+offset_top = -128.0
+offset_right = -246.0
+offset_bottom = -105.0
+text = "Score:"
+
+[node name="Player" parent="." instance=ExtResource("2_g7ys7")]
+position = Vector2(-223, -128)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(1, 0)
+tile_set = SubResource("TileSet_dj43a")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65519, 262144, 1, 262161, 262144, 1, 589841, 262144, 1, -393199, 262144, 1, -393203, 262144, 1, -393207, 262144, 1, -393208, 262144, 1, -393212, 262144, 1, -327681, 262144, 1, -327682, 262144, 1, -327683, 262144, 1, -327684, 262144, 1, -327685, 262144, 1, -327686, 262144, 1, -327687, 262144, 1, -327692, 262144, 1, -327693, 262144, 1, -327696, 262144, 1, -327697, 262144, 1, -327698, 262144, 1, -65525, 262144, 1, -65524, 262144, 1, -65523, 262144, 1, -65528, 262144, 1, -65529, 262144, 1, -65530, 262144, 1, -65533, 262144, 1, -65534, 262144, 1, -65535, 262144, 1, -65536, 262144, 1, -4, 262144, 1, -6, 262144, 1, -5, 262144, 1, -11, 262144, 1, -10, 327680, 1, -16, 262144, 1, -15, 262144, 1, 262157, 262144, 1, 262156, 262144, 1, 262151, 262144, 1, 262147, 262144, 1, 262146, 262144, 1, 262145, 262144, 1, 262144, 262144, 1, 327677, 262144, 1, 327676, 262144, 1, 327675, 262144, 1, 327674, 262144, 1, 327672, 262144, 1, 327668, 262144, 1, 327667, 262144, 1, 327666, 262144, 1, 327663, 262144, 1, 327662, 262144, 1, 655342, 262144, 1, 655343, 262144, 1, 655344, 262144, 1, 655347, 262144, 1, 655352, 262144, 1, 655353, 262144, 1, 655354, 262144, 1, 655358, 262144, 1, 589827, 262144, 1, 589828, 262144, 1, 589829, 262144, 1, 589830, 262144, 1, 589833, 262144, 1, 589836, 262144, 1, 589837, 262144, 1)
+
+[node name="Killzone" parent="." instance=ExtResource("4_tvdjs")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-210, 162)
+shape = SubResource("WorldBoundaryShape2D_fx4ty")
+
+[connection signal="body_entered" from="Quiz Manager/AnswerA" to="Quiz Manager" method="_on_answer_a_body_entered"]
+[connection signal="body_entered" from="Quiz Manager/AnswerB" to="Quiz Manager" method="_on_answer_b_body_entered"]
+[connection signal="body_entered" from="Quiz Manager/AnswerC" to="Quiz Manager" method="_on_answer_c_body_entered"]
+[connection signal="body_entered" from="Quiz Manager/AnswerD" to="Quiz Manager" method="_on_answer_d_body_entered"]

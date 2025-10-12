@@ -1,0 +1,150 @@
+[gd_scene load_steps=14 format=3 uid="uid://dfua7p56iuni2"]
+
+[ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_iuxf6"]
+[ext_resource type="Script" path="res://scripts/levels.gd" id="1_mwfm3"]
+[ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="2_4awim"]
+[ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="3_dsxru"]
+[ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="4_w0icw"]
+
+[sub_resource type="GDScript" id="GDScript_2s1rd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r82tl"]
+size = Vector2(20, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvhvb"]
+size = Vector2(20, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5giq"]
+size = Vector2(20, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3stg"]
+size = Vector2(20, 81)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bsis6"]
+texture = ExtResource("3_dsxru")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0.25, 8, 8, -8, 8)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0.25, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_1rlc3"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bsis6")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_trsja"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mwfm3")
+
+[node name="Quiz Manager" type="Node" parent="."]
+script = ExtResource("1_iuxf6")
+
+[node name="Question" type="Label" parent="Quiz Manager"]
+offset_left = -288.0
+offset_top = -163.0
+offset_right = 90.0
+offset_bottom = -140.0
+text = "Question: "
+
+[node name="AnswerA" type="Area2D" parent="Quiz Manager"]
+position = Vector2(1, 0)
+collision_layer = 2
+script = SubResource("GDScript_2s1rd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerA"]
+position = Vector2(298, -130)
+shape = SubResource("RectangleShape2D_r82tl")
+
+[node name="AnswerB" type="Area2D" parent="Quiz Manager"]
+position = Vector2(1, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerB"]
+position = Vector2(298, -45)
+shape = SubResource("RectangleShape2D_uvhvb")
+
+[node name="AnswerC" type="Area2D" parent="Quiz Manager"]
+position = Vector2(253, 57)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerC"]
+position = Vector2(46, -22)
+shape = SubResource("RectangleShape2D_y5giq")
+
+[node name="AnswerD" type="Area2D" parent="Quiz Manager"]
+position = Vector2(277, 142)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerD"]
+position = Vector2(22, -27)
+shape = SubResource("RectangleShape2D_j3stg")
+
+[node name="A" type="Label" parent="Quiz Manager"]
+offset_left = 156.0
+offset_top = -130.0
+offset_right = 196.0
+offset_bottom = -107.0
+text = "A. "
+
+[node name="B" type="Label" parent="Quiz Manager"]
+offset_left = 156.0
+offset_top = -53.0
+offset_right = 196.0
+offset_bottom = -30.0
+text = "B."
+
+[node name="C" type="Label" parent="Quiz Manager"]
+offset_left = 156.0
+offset_top = 23.0
+offset_right = 196.0
+offset_bottom = 46.0
+text = "C."
+
+[node name="D" type="Label" parent="Quiz Manager"]
+offset_left = 156.0
+offset_top = 102.0
+offset_right = 196.0
+offset_bottom = 125.0
+text = "D."
+
+[node name="Score" type="Label" parent="Quiz Manager"]
+offset_left = -286.0
+offset_top = -128.0
+offset_right = -246.0
+offset_bottom = -105.0
+text = "Score:"
+
+[node name="Player" parent="." instance=ExtResource("2_4awim")]
+position = Vector2(-223, -128)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(1, 0)
+tile_set = SubResource("TileSet_1rlc3")
+format = 2
+layer_0/tile_data = PackedInt32Array(-15, 262144, 1, -9, 262144, 1, -65532, 262144, 1, -65531, 262144, 1, -65526, 262144, 1, 327662, 262144, 1, 327663, 262144, 1, 327664, 262144, 1, 327668, 262144, 1, 327669, 262144, 1, 327670, 262144, 1, 262156, 262144, 1, 262157, 262144, 1, -327698, 262144, 1, 655345, 262144, 1, 655352, 262144, 1, 655357, 262144, 1, 589827, 262144, 1, -393202, 262144, 1, -393203, 262144, 1, -393208, 262144, 1, -393214, 262144, 1, -327686, 262144, 1, -327692, 262144, 1, -327691, 262144, 1, -327697, 262144, 1, -327696, 262144, 1, -65519, 262144, 1, 262161, 262144, 1, 589841, 262144, 1, -327690, 262144, 1, -327685, 262144, 1, -327684, 262144, 1, -393215, 262144, 1, -393209, 262144, 1, -14, 262144, 1, -393216, 262144, 1, -393210, 262144, 1, -393204, 262144, 1, -13, 262144, 1, -7, 262144, 1, -8, 262144, 1, -3, 262144, 1, -2, 262144, 1, -1, 262144, 1, -65527, 262144, 1, -65525, 262144, 1, 262158, 262144, 1, 262151, 262144, 1, 262152, 262144, 1, 262150, 262144, 1, 262146, 262144, 1, 262145, 262144, 1, 262144, 262144, 1, 327674, 262144, 1, 327675, 262144, 1, 327676, 262144, 1, 655346, 262144, 1, 655347, 262144, 1, 655351, 262144, 1, 655353, 262144, 1, 655358, 262144, 1, 655359, 262144, 1, 589828, 262144, 1, 589829, 262144, 1, 589833, 262144, 1, 589834, 262144, 1, 589835, 262144, 1, -393199, 262144, 1, -65533, 262144, 1, -65520, 262144, 1, 589840, 262144, 1, -65521, 262144, 1, 589839, 262144, 1)
+
+[node name="Killzone" parent="." instance=ExtResource("4_w0icw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-210, 162)
+shape = SubResource("WorldBoundaryShape2D_trsja")
+
+[connection signal="body_entered" from="Quiz Manager/AnswerA" to="Quiz Manager" method="_on_answer_a_body_entered"]
+[connection signal="body_entered" from="Quiz Manager/AnswerB" to="Quiz Manager" method="_on_answer_b_body_entered"]
+[connection signal="body_entered" from="Quiz Manager/AnswerC" to="Quiz Manager" method="_on_answer_c_body_entered"]
+[connection signal="body_entered" from="Quiz Manager/AnswerD" to="Quiz Manager" method="_on_answer_d_body_entered"]

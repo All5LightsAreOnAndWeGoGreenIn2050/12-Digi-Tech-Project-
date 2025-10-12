@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://n70ywfexr7mw"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_0dydm"]
+[ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="1_p12ac"]
+[ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="2_0ffxn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i8exo"]
+texture = ExtResource("2_0ffxn")
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.125, 8, 0, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.125, 8, 0, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.125, 8, 0, 8, 8, -8, 8)
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.125, 8, 0.125, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.125, 8, 0.125, 8, 8, -8, 8)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yastx"]
+tile_size = Vector2i(4, 4)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_i8exo")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0dydm")
+
+[node name="Player" parent="." instance=ExtResource("1_p12ac")]
+position = Vector2(-90, -43)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_yastx")
+format = 2
+layer_0/tile_data = PackedInt32Array(-589856, 262144, 1, -589855, 327680, 1, -589854, 262144, 1, -589853, 327680, 1, -589852, 262144, 1, -589851, 327680, 1)

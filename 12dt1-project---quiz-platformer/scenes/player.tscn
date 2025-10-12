@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://m1igqjn5488t"]
+
+[ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_lwkvb"]
+[ext_resource type="Texture2D" uid="uid://b0rtrbieixlr" path="res://assets/Rocky Roads/Rocky Roads/Enemies/chicken.png" id="2_oce0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui4py"]
+atlas = ExtResource("2_oce0u")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1dcf"]
+atlas = ExtResource("2_oce0u")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i25ta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui4py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1dcf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vk346"]
+radius = 5.09902
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_lwkvb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-35, -8)
+scale = Vector2(0.875, 0.75)
+sprite_frames = SubResource("SpriteFrames_i25ta")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-37, -6)
+shape = SubResource("CircleShape2D_vk346")
