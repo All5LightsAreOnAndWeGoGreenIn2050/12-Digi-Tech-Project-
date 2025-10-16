@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqxiwi5803jvr"]
+[gd_scene load_steps=14 format=3 uid="uid://cqxiwi5803jvr"]
 
 [ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_wr7b0"]
 [ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="2_dpris"]
 [ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="3_4aij5"]
+[ext_resource type="Texture2D" uid="uid://b0rtrbieixlr" path="res://assets/Rocky Roads/Rocky Roads/Enemies/chicken.png" id="3_ywmfm"]
 [ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="4_uafcj"]
 
 [sub_resource type="GDScript" id="GDScript_6ayin"]
@@ -124,8 +125,25 @@ offset_right = -246.0
 offset_bottom = -105.0
 text = "Score:"
 
+[node name="AnswerChecker" type="Label" parent="Quiz Manager"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="Quiz Manager"]
+
+[node name="DeathMessage" type="Label" parent="Quiz Manager"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Player" parent="." instance=ExtResource("2_dpris")]
 position = Vector2(-223, -128)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(16384, 0)
+scale = Vector2(46, 1e-05)
+texture = ExtResource("3_ywmfm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

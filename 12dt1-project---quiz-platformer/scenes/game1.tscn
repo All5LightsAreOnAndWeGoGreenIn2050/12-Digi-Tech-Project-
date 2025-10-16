@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://n70ywfexr7mw"]
+[gd_scene load_steps=15 format=3 uid="uid://n70ywfexr7mw"]
 
 [ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_4ymed"]
 [ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="1_k87d8"]
 [ext_resource type="Script" path="res://scripts/gamescore.gd" id="1_py0eg"]
 [ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="2_cird7"]
 [ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="3_n7vu5"]
+[ext_resource type="Texture2D" uid="uid://b0rtrbieixlr" path="res://assets/Rocky Roads/Rocky Roads/Enemies/chicken.png" id="4_dwiw5"]
 
 [sub_resource type="GDScript" id="GDScript_d3s18"]
 
@@ -127,8 +128,28 @@ offset_right = -246.0
 offset_bottom = -105.0
 text = "Score:"
 
+[node name="AnswerChecker" type="Label" parent="Quiz Manager"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="Quiz Manager"]
+
+[node name="DeathMessage" type="Label" parent="Quiz Manager"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Player" parent="." instance=ExtResource("1_k87d8")]
-position = Vector2(-223, -128)
+position = Vector2(-225, -119)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_repeat = 2
+position = Vector2(16384, 0)
+scale = Vector2(46, 1e-05)
+texture = ExtResource("4_dwiw5")
+region_enabled = true
+region_rect = Rect2(0, 0, 0, 4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

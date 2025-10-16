@@ -1,5 +1,8 @@
 extends Node
 
+@onready var answer_checker = $AnswerChecker
+@onready var timer: Timer = $Timer
+
 var questions = [
 {
 	"question": "What is the German word for Apple?",
@@ -258,6 +261,15 @@ var current_question = 0
 
 func _ready():
 	show_random_question()
+	# Check if there’s a message to show
+	if Gamescore.last_answer_message != "":
+		answer_checker.text = Gamescore.last_answer_message
+		answer_checker.visible = true
+		timer.start(1.5)
+		Gamescore.last_answer_message = ""  # clear it so it doesn’t repeat
+
+func _on_Timer_timeout():
+	answer_checker.visible = false
 	
 func show_random_question():
 	var random_index = rng.randi_range(0, questions.size() - 1)
@@ -272,16 +284,24 @@ func show_question(index):
 	$C.text = q["options"][2]
 	$D.text = q["options"][3]
 	
-
+	
 func check_answer(selected_index):
 	var correct_index = questions[current_question]["correct_index"]
+
 	if selected_index == correct_index:
 		print("Correct!")
+		Gamescore.last_answer_message = "Correct!"
 		Gamescore.increase_score()
 	else:
 		print("Wrong!")
+		Gamescore.last_answer_message = "Wrong!"
 		Gamescore.reset_score()
+
+	# Immediately go to next level
 	Levels.go_to_next_level()
+
+	# Then start a short timer to hide the message
+	timer.start(1.5)
 	
 func _on_answer_a_body_entered(body):
 	if body.name == "Player":
