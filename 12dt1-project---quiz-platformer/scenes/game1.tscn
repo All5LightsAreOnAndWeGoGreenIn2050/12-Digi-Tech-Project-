@@ -1,11 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://n70ywfexr7mw"]
+[gd_scene load_steps=16 format=3 uid="uid://n70ywfexr7mw"]
 
-[ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_4ymed"]
+[ext_resource type="Script" path="res://scripts/gamemodes.gd" id="1_ftfh4"]
 [ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="1_k87d8"]
-[ext_resource type="Script" path="res://scripts/gamescore.gd" id="1_py0eg"]
 [ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="2_cird7"]
 [ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="3_n7vu5"]
 [ext_resource type="Texture2D" uid="uid://b0rtrbieixlr" path="res://assets/Rocky Roads/Rocky Roads/Enemies/chicken.png" id="4_dwiw5"]
+[ext_resource type="PackedScene" uid="uid://bipel30x7imk8" path="res://scenes/timer.tscn" id="7_ex002"]
+
+[sub_resource type="GDScript" id="GDScript_sh38k"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="GDScript" id="GDScript_d3s18"]
 
@@ -48,10 +62,10 @@ sources/0 = SubResource("TileSetAtlasSource_7g8d0")
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(1, 0)
-script = ExtResource("1_py0eg")
+script = SubResource("GDScript_sh38k")
 
 [node name="Quiz Manager" type="Node" parent="."]
-script = ExtResource("1_4ymed")
+script = ExtResource("1_ftfh4")
 
 [node name="Question" type="Label" parent="Quiz Manager"]
 offset_left = -286.0
@@ -166,6 +180,10 @@ layer_0/tile_data = PackedInt32Array(-16, 262144, 1, -15, 327680, 1, -11, 262144
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(-210, 162)
 shape = SubResource("WorldBoundaryShape2D_jp4kg")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Node2D" parent="UI" instance=ExtResource("7_ex002")]
 
 [connection signal="body_entered" from="Quiz Manager/AnswerA" to="Quiz Manager" method="_on_answer_a_body_entered"]
 [connection signal="body_entered" from="Quiz Manager/AnswerB" to="Quiz Manager" method="_on_answer_b_body_entered"]

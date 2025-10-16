@@ -19,6 +19,7 @@ config/icon="res://scenes/icon.svg"
 
 Levels="*res://scripts/levels.gd"
 Gamescore="*res://scripts/gamescore.gd"
+GameMode="*res://scripts/gamemodes.gd"
 
 [display]
 

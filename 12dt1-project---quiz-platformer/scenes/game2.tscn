@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfua7p56iuni2"]
+[gd_scene load_steps=16 format=3 uid="uid://dfua7p56iuni2"]
 
 [ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_iuxf6"]
 [ext_resource type="Script" path="res://scripts/levels.gd" id="1_mwfm3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="3_dsxru"]
 [ext_resource type="Texture2D" uid="uid://b0rtrbieixlr" path="res://assets/Rocky Roads/Rocky Roads/Enemies/chicken.png" id="4_q8ybh"]
 [ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="4_w0icw"]
+[ext_resource type="PackedScene" uid="uid://bipel30x7imk8" path="res://scenes/timer.tscn" id="7_7uxu4"]
 
 [sub_resource type="GDScript" id="GDScript_2s1rd"]
 
@@ -161,6 +162,10 @@ layer_0/tile_data = PackedInt32Array(-15, 262144, 1, -9, 262144, 1, -65532, 2621
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(-210, 162)
 shape = SubResource("WorldBoundaryShape2D_trsja")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Node2D" parent="UI" instance=ExtResource("7_7uxu4")]
 
 [connection signal="body_entered" from="Quiz Manager/AnswerA" to="Quiz Manager" method="_on_answer_a_body_entered"]
 [connection signal="body_entered" from="Quiz Manager/AnswerB" to="Quiz Manager" method="_on_answer_b_body_entered"]

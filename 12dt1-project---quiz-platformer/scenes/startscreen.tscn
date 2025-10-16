@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbvmle0xf5c0h"]
+
+[ext_resource type="Script" path="res://scripts/startscreen.gd" id="1_f00xj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 55.0
+offset_top = -6.0
+offset_right = 1075.0
+offset_bottom = 413.0
+script = ExtResource("1_f00xj")
+
+[node name="Normal" type="Button" parent="."]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 149.0
+offset_right = 521.0
+offset_bottom = 246.0
+text = "Normal"
+
+[node name="Time Trial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 149.0
+offset_right = 749.0
+offset_bottom = 246.0
+text = "Time Trial"
+
+[connection signal="pressed" from="Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="Time Trial" to="." method="_on_time_trial_pressed"]
