@@ -1,10 +1,14 @@
-[gd_scene format=3 uid="uid://6f8cxsgodnkq"]
+[gd_scene load_steps=2 format=3 uid="uid://6f8cxsgodnkq"]
+
+[ext_resource type="Script" path="res://scripts/pause_button.gd" id="1_4o2vw"]
 
 [node name="Control" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_4o2vw")
 
 [node name="RESUME" type="Button" parent="."]
 layout_mode = 0
@@ -21,3 +25,6 @@ offset_top = 288.0
 offset_right = 749.0
 offset_bottom = 384.0
 text = "BACK TO MAIN MENU"
+
+[connection signal="pressed" from="RESUME" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="BACK TO MAIN MENU" to="." method="_on_back_to_main_menu_pressed"]

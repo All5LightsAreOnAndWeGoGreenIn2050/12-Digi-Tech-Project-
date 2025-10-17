@@ -1,11 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://n70ywfexr7mw"]
+[gd_scene load_steps=21 format=3 uid="uid://n70ywfexr7mw"]
 
-[ext_resource type="Script" path="res://scripts/gamemodes.gd" id="1_ftfh4"]
-[ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="1_k87d8"]
+[ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_l8ok0"]
 [ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="2_cird7"]
 [ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="3_n7vu5"]
-[ext_resource type="Texture2D" uid="uid://b0rtrbieixlr" path="res://assets/Rocky Roads/Rocky Roads/Enemies/chicken.png" id="4_dwiw5"]
+[ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="6_5u53n"]
+[ext_resource type="Texture2D" uid="uid://thqle27188yk" path="res://assets/single_shark.png" id="6_ofeba"]
+[ext_resource type="PackedScene" uid="uid://6f8cxsgodnkq" path="res://scenes/pause_button.tscn" id="7_aewyp"]
 [ext_resource type="PackedScene" uid="uid://bipel30x7imk8" path="res://scenes/timer.tscn" id="7_ex002"]
+[ext_resource type="Texture2D" uid="uid://c7cmldv47ualc" path="res://assets/single_fish.png" id="7_hhhls"]
+[ext_resource type="Texture2D" uid="uid://c56nngih3ortw" path="res://assets/single_penguin.png" id="8_72hlu"]
+[ext_resource type="Texture2D" uid="uid://cdr24aa7lesc0" path="res://assets/single_chicken.png" id="9_hf7l7"]
 
 [sub_resource type="GDScript" id="GDScript_sh38k"]
 script/source = "extends Node2D
@@ -21,18 +25,18 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="GDScript" id="GDScript_d3s18"]
+[sub_resource type="GDScript" id="GDScript_qsl22"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1c72"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykxux"]
 size = Vector2(20, 78)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyabm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acqmu"]
 size = Vector2(20, 85)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l17mr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6aqn"]
 size = Vector2(20, 67)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3awws"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4cge"]
 size = Vector2(20, 81)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7g8d0"]
@@ -60,79 +64,82 @@ sources/0 = SubResource("TileSetAtlasSource_7g8d0")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jp4kg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sgg2"]
+size = Vector2(16, 16)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(1, 0)
 script = SubResource("GDScript_sh38k")
 
 [node name="Quiz Manager" type="Node" parent="."]
-script = ExtResource("1_ftfh4")
+script = ExtResource("1_l8ok0")
 
 [node name="Question" type="Label" parent="Quiz Manager"]
-offset_left = -286.0
-offset_top = -160.0
-offset_right = 92.0
-offset_bottom = -137.0
+offset_left = -288.0
+offset_top = -163.0
+offset_right = 90.0
+offset_bottom = -140.0
 text = "Question: "
 
 [node name="AnswerA" type="Area2D" parent="Quiz Manager"]
 position = Vector2(1, 0)
 collision_layer = 2
-script = SubResource("GDScript_d3s18")
+script = SubResource("GDScript_qsl22")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerA"]
-position = Vector2(301, -128)
-shape = SubResource("RectangleShape2D_f1c72")
+position = Vector2(298, -130)
+shape = SubResource("RectangleShape2D_ykxux")
 
 [node name="AnswerB" type="Area2D" parent="Quiz Manager"]
 position = Vector2(1, 0)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerB"]
-position = Vector2(301, -44)
-shape = SubResource("RectangleShape2D_pyabm")
+position = Vector2(298, -45)
+shape = SubResource("RectangleShape2D_acqmu")
 
 [node name="AnswerC" type="Area2D" parent="Quiz Manager"]
 position = Vector2(253, 57)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerC"]
-position = Vector2(49, -22)
-shape = SubResource("RectangleShape2D_l17mr")
+position = Vector2(46, -22)
+shape = SubResource("RectangleShape2D_t6aqn")
 
 [node name="AnswerD" type="Area2D" parent="Quiz Manager"]
 position = Vector2(277, 142)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quiz Manager/AnswerD"]
-position = Vector2(25, -27)
-shape = SubResource("RectangleShape2D_3awws")
+position = Vector2(22, -27)
+shape = SubResource("RectangleShape2D_a4cge")
 
 [node name="A" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = -142.0
-offset_right = 194.0
-offset_bottom = -119.0
+offset_left = 90.0
+offset_top = -114.0
+offset_right = 130.0
+offset_bottom = -91.0
 text = "A. "
 
 [node name="B" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = -58.0
-offset_right = 194.0
-offset_bottom = -35.0
+offset_left = 90.0
+offset_top = -36.0
+offset_right = 130.0
+offset_bottom = -13.0
 text = "B."
 
 [node name="C" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = 27.0
-offset_right = 194.0
-offset_bottom = 50.0
+offset_left = 89.0
+offset_top = 44.0
+offset_right = 129.0
+offset_bottom = 67.0
 text = "C."
 
 [node name="D" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = 105.0
-offset_right = 194.0
-offset_bottom = 128.0
+offset_left = 92.0
+offset_top = 127.0
+offset_right = 132.0
+offset_bottom = 150.0
 text = "D."
 
 [node name="Score" type="Label" parent="Quiz Manager"]
@@ -154,17 +161,6 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Player" parent="." instance=ExtResource("1_k87d8")]
-position = Vector2(-225, -119)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture_repeat = 2
-position = Vector2(16384, 0)
-scale = Vector2(46, 1e-05)
-texture = ExtResource("4_dwiw5")
-region_enabled = true
-region_rect = Rect2(0, 0, 0, 4)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
@@ -184,6 +180,49 @@ shape = SubResource("WorldBoundaryShape2D_jp4kg")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Node2D" parent="UI" instance=ExtResource("7_ex002")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("7_aewyp")]
+process_mode = 3
+z_index = 110
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("6_5u53n")
+
+[node name="SingleShark" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(0.572124, 0.7305)
+texture = ExtResource("6_ofeba")
+flip_h = true
+
+[node name="SingleFish" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(1.70313, 1.71875)
+texture = ExtResource("7_hhhls")
+
+[node name="SinglePenguin" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(1.65625, 1.32813)
+texture = ExtResource("8_72hlu")
+
+[node name="SingleChicken" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(1.44643, 1.125)
+texture = ExtResource("9_hf7l7")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-253, -111)
+shape = SubResource("RectangleShape2D_4sgg2")
 
 [connection signal="body_entered" from="Quiz Manager/AnswerA" to="Quiz Manager" method="_on_answer_a_body_entered"]
 [connection signal="body_entered" from="Quiz Manager/AnswerB" to="Quiz Manager" method="_on_answer_b_body_entered"]

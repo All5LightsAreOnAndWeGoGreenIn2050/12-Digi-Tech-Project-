@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkbmw5t3hpl5n"]
+
+[ext_resource type="Texture2D" uid="uid://thqle27188yk" path="res://assets/single_shark.png" id="1_bavit"]
+[ext_resource type="Texture2D" uid="uid://c7cmldv47ualc" path="res://assets/single_fish.png" id="2_jqx6e"]
+[ext_resource type="Texture2D" uid="uid://c56nngih3ortw" path="res://assets/single_penguin.png" id="3_dgbaf"]
+[ext_resource type="Texture2D" uid="uid://cdr24aa7lesc0" path="res://assets/single_chicken.png" id="4_cy7s8"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="SingleShark" type="Sprite2D" parent="Player"]
+position = Vector2(105, 38)
+scale = Vector2(1.0505, 1.336)
+texture = ExtResource("1_bavit")
+flip_h = true
+
+[node name="SingleFish" type="Sprite2D" parent="Player"]
+position = Vector2(109, 40)
+scale = Vector2(2.34375, 2.3125)
+texture = ExtResource("2_jqx6e")
+
+[node name="SinglePenguin" type="Sprite2D" parent="Player"]
+position = Vector2(113, 21)
+scale = Vector2(2.625, 2.53125)
+texture = ExtResource("3_dgbaf")
+
+[node name="SingleChicken" type="Sprite2D" parent="Player"]
+position = Vector2(112, 30)
+scale = Vector2(2.03571, 1.875)
+texture = ExtResource("4_cy7s8")
+flip_h = true

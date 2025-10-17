@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://br4w2jmal631y"]
+
+[ext_resource type="Script" path="res://scripts/character_selection.gd" id="1_71177"]
+[ext_resource type="Texture2D" uid="uid://cdr24aa7lesc0" path="res://assets/single_chicken.png" id="2_1fxfq"]
+[ext_resource type="Texture2D" uid="uid://c7cmldv47ualc" path="res://assets/single_fish.png" id="3_h6ede"]
+[ext_resource type="Texture2D" uid="uid://c56nngih3ortw" path="res://assets/single_penguin.png" id="4_ierq2"]
+[ext_resource type="Texture2D" uid="uid://thqle27188yk" path="res://assets/single_shark.png" id="5_yb3sr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jvulb"]
+
+[node name="CharacterSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1096.0
+offset_bottom = 470.0
+script = ExtResource("1_71177")
+
+[node name="CharacterChicken" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 142.0
+offset_right = 269.0
+offset_bottom = 224.0
+texture_normal = ExtResource("2_1fxfq")
+texture_disabled = SubResource("ViewportTexture_jvulb")
+
+[node name="CharacterFish" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 161.0
+offset_right = 536.0
+offset_bottom = 285.0
+texture_normal = ExtResource("3_h6ede")
+
+[node name="CharacterPenguin" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 146.0
+offset_right = 691.0
+offset_bottom = 220.0
+texture_normal = ExtResource("4_ierq2")
+
+[node name="CharacterShark" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 147.0
+offset_right = 989.0
+offset_bottom = 304.0
+texture_normal = ExtResource("5_yb3sr")
+
+[node name="Main Menu Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 346.0
+offset_right = 941.0
+offset_bottom = 439.0
+text = "Back to Main Menu"
+
+[connection signal="pressed" from="CharacterChicken" to="." method="_on_character_chicken_pressed"]
+[connection signal="pressed" from="CharacterFish" to="." method="_on_character_fish_pressed"]
+[connection signal="pressed" from="CharacterPenguin" to="." method="_on_character_penguin_pressed"]
+[connection signal="pressed" from="CharacterShark" to="." method="_on_character_shark_pressed"]
+[connection signal="pressed" from="Main Menu Back" to="." method="_on_main_menu_back_pressed"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://erwf80dmtdnm"]
+
+[ext_resource type="Script" path="res://scripts/howtoplay.gd" id="1_jiho6"]
+[ext_resource type="Texture2D" uid="uid://75uglxtyxfwo" path="res://assets/German_Apple_Game.png" id="2_gg1w0"]
+[ext_resource type="Texture2D" uid="uid://lry3fslpfxgm" path="res://assets/Longest_River_Game.png" id="3_jk0hu"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.764
+offset_right = -24.0
+offset_bottom = -0.072052
+script = ExtResource("1_jiho6")
+
+[node name="GermanAppleGame" type="Sprite2D" parent="."]
+position = Vector2(871, 148)
+scale = Vector2(0.54791, 0.512567)
+texture = ExtResource("2_gg1w0")
+
+[node name="LongestRiverGame" type="Sprite2D" parent="."]
+position = Vector2(282, 149)
+scale = Vector2(0.281364, 0.26228)
+texture = ExtResource("3_jk0hu")
+
+[node name="NormalGameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.083
+offset_left = 14.0
+offset_top = 327.0
+offset_right = 445.376
+offset_bottom = 395.0
+text = "In Normal mode, you answer questions to increase the score. Try and get
+as high of a score as possible. Die or get it wrong and score resets to 0."
+
+[node name="TimeTrialGameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 614.0
+offset_top = 330.0
+offset_right = 1143.0
+offset_bottom = 379.0
+text = "In Time Trial you have to get 10 questions in a row (or Score 10), in 
+order to win. Score resets everytime you get it wrong or die. Get the 
+fastest time possible."
+
+[node name="ReturnToMainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 424.0
+offset_right = 1111.0
+offset_bottom = 483.0
+text = "RETURN TO MAIN MENU"
+
+[connection signal="pressed" from="ReturnToMainMenu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]

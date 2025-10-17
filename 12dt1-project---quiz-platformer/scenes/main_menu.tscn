@@ -38,7 +38,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxFlat_uoc1t")
 text = "CHARACTERS"
 
-[node name="SETTINGS" type="Button" parent="."]
+[node name="HOW TO PLAY" type="Button" parent="."]
 layout_mode = 2
 offset_left = 313.0
 offset_top = 415.0
@@ -46,7 +46,7 @@ offset_right = 823.0
 offset_bottom = 492.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxFlat_uoc1t")
-text = "SETTINGS"
+text = "HOW TO PLAY"
 
 [node name="STATISTICS" type="Button" parent="."]
 layout_mode = 2
@@ -80,6 +80,7 @@ text = "QUIZOBBER"
 
 [connection signal="pressed" from="START" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CHARACTERS" to="." method="_on_characters_pressed"]
-[connection signal="pressed" from="SETTINGS" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HOW TO PLAY" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HOW TO PLAY" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="STATISTICS" to="." method="_on_statistics_pressed"]
 [connection signal="pressed" from="EXIT" to="." method="_on_exit_pressed"]

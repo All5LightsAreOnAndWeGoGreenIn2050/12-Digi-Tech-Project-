@@ -1,11 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://c81j0cnjy7abh"]
+[gd_scene load_steps=20 format=3 uid="uid://c81j0cnjy7abh"]
 
 [ext_resource type="Script" path="res://scripts/quiz_manager.gd" id="1_fx1cm"]
-[ext_resource type="PackedScene" uid="uid://m1igqjn5488t" path="res://scenes/player.tscn" id="2_jovnd"]
 [ext_resource type="Texture2D" uid="uid://drg0a1hs0xos5" path="res://assets/tileset_desert_8x8.png" id="3_l187d"]
-[ext_resource type="Texture2D" uid="uid://b0rtrbieixlr" path="res://assets/Rocky Roads/Rocky Roads/Enemies/chicken.png" id="3_rsp1r"]
 [ext_resource type="PackedScene" uid="uid://r5fv5ts23nsv" path="res://scenes/killzone.tscn" id="4_71sow"]
+[ext_resource type="Texture2D" uid="uid://thqle27188yk" path="res://assets/single_shark.png" id="6_4py03"]
 [ext_resource type="PackedScene" uid="uid://bipel30x7imk8" path="res://scenes/timer.tscn" id="6_knj5q"]
+[ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="6_ptm8w"]
+[ext_resource type="PackedScene" uid="uid://6f8cxsgodnkq" path="res://scenes/pause_button.tscn" id="7_2v070"]
+[ext_resource type="Texture2D" uid="uid://c7cmldv47ualc" path="res://assets/single_fish.png" id="7_hi3vl"]
+[ext_resource type="Texture2D" uid="uid://c56nngih3ortw" path="res://assets/single_penguin.png" id="8_yyp3m"]
+[ext_resource type="Texture2D" uid="uid://cdr24aa7lesc0" path="res://assets/single_chicken.png" id="9_65dk3"]
 
 [sub_resource type="GDScript" id="GDScript_il4q6"]
 
@@ -45,6 +49,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_40cpr")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wgveo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3kjo"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -92,31 +98,31 @@ position = Vector2(20, -27)
 shape = SubResource("RectangleShape2D_sxkfg")
 
 [node name="A" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = -134.0
-offset_right = 194.0
-offset_bottom = -111.0
+offset_left = 78.0
+offset_top = -112.0
+offset_right = 118.0
+offset_bottom = -89.0
 text = "A. "
 
 [node name="B" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = -59.0
-offset_right = 194.0
-offset_bottom = -36.0
+offset_left = 78.0
+offset_top = -36.0
+offset_right = 118.0
+offset_bottom = -13.0
 text = "B."
 
 [node name="C" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = 21.0
-offset_right = 194.0
-offset_bottom = 44.0
+offset_left = 78.0
+offset_top = 48.0
+offset_right = 118.0
+offset_bottom = 71.0
 text = "C."
 
 [node name="D" type="Label" parent="Quiz Manager"]
-offset_left = 154.0
-offset_top = 100.0
-offset_right = 194.0
-offset_bottom = 123.0
+offset_left = 78.0
+offset_top = 128.0
+offset_right = 118.0
+offset_bottom = 151.0
 text = "D."
 
 [node name="Score" type="Label" parent="Quiz Manager"]
@@ -138,14 +144,6 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Player" parent="." instance=ExtResource("2_jovnd")]
-position = Vector2(-223, -128)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(16384, 0)
-scale = Vector2(46, 1e-05)
-texture = ExtResource("3_rsp1r")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
@@ -164,6 +162,48 @@ shape = SubResource("WorldBoundaryShape2D_wgveo")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Node2D" parent="UI" instance=ExtResource("6_knj5q")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("7_2v070")]
+process_mode = 3
+z_index = 110
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("6_ptm8w")
+
+[node name="SingleShark" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(0.572124, 0.7305)
+texture = ExtResource("6_4py03")
+flip_h = true
+
+[node name="SingleFish" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(1.70313, 1.71875)
+texture = ExtResource("7_hi3vl")
+
+[node name="SinglePenguin" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(1.65625, 1.32813)
+texture = ExtResource("8_yyp3m")
+
+[node name="SingleChicken" type="Sprite2D" parent="Player"]
+position = Vector2(-250, -120)
+scale = Vector2(1.44643, 1.125)
+texture = ExtResource("9_65dk3")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-250, -112)
+shape = SubResource("RectangleShape2D_l3kjo")
 
 [connection signal="body_entered" from="Quiz Manager/AnswerA" to="Quiz Manager" method="_on_answer_a_body_entered"]
 [connection signal="body_entered" from="Quiz Manager/AnswerB" to="Quiz Manager" method="_on_answer_b_body_entered"]

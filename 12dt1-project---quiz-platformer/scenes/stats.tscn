@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5glkt8akj06o"]
+
+[ext_resource type="Script" path="res://scripts/statsscreen.gd" id="1_xaer0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xaer0")
+
+[node name="NormalHighScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 86.0
+offset_right = 846.0
+offset_bottom = 189.0
+text = "Highscore: 0"
+
+[node name="TimeTrialTimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 169.0
+offset_right = 588.0
+offset_bottom = 208.0
+text = "Fastest Time: 00:00:00"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 248.0
+offset_right = 922.0
+offset_bottom = 367.0
+text = "BACK TO MAIN MENU"
